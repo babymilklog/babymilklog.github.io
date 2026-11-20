@@ -1,0 +1,300 @@
+/* 喝餒餒記錄 — shared styles. Self-contained: no web fonts, no images, no external requests. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #59616b;
+  --border: #e3dfd6;
+  --accent: #2c6a88;
+  --accent-text: #ffffff;
+  --accent-soft: #e7f0f4;
+  --note-bg: #fff6e5;
+  --note-border: #f0d9a8;
+  --radius: 14px;
+  --gutter: 16px;
+  --measure: 44rem;
+  --font: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Noto Sans TC",
+    "Microsoft JhengHei", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141619;
+    --surface: #1c1f23;
+    --text: #e9e7e3;
+    --muted: #a5abb3;
+    --border: #2f3338;
+    --accent: #82c3df;
+    --accent-text: #0e1a20;
+    --accent-soft: #1d2c34;
+    --note-bg: #2a2418;
+    --note-border: #4a3d22;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+:lang(en) {
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Header */
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand small {
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+/* In-page language switch (plain anchors, no script) */
+
+.lang-switch {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.lang-switch .wrap {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.lang-switch a {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.lang-switch a:hover,
+.lang-switch a:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Content */
+
+main {
+  padding: 24px 0 48px;
+}
+
+section[lang] + section[lang] {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 2px solid var(--border);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.35;
+  scroll-margin-top: 72px;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 8px 0 4px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 36px 0 8px;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 28px 0 6px;
+}
+
+section[id] {
+  scroll-margin-top: 64px;
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 14px;
+}
+
+ul,
+ol {
+  padding-left: 1.4em;
+}
+
+li + li {
+  margin-top: 6px;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+strong {
+  font-weight: 650;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin-bottom: 20px;
+}
+
+.summary {
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 16px 18px 4px;
+  margin: 20px 0 8px;
+}
+
+.summary h2 {
+  margin-top: 0;
+  font-size: 1.0625rem;
+}
+
+.note {
+  background: var(--note-bg);
+  border: 1px solid var(--note-border);
+  border-radius: var(--radius);
+  padding: 14px 16px 2px;
+  margin: 16px 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Home page */
+
+.hero {
+  padding: 40px 0 8px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.hero .subtitle {
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.links {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links li + li {
+  margin-top: 0;
+}
+
+.links a {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.links a span {
+  display: block;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.links a:hover,
+.links a:focus-visible {
+  border-color: var(--accent);
+}
+
+@media (min-width: 560px) {
+  .links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.875rem;
+  padding: 20px 0 32px;
+}
+
+.site-footer p {
+  margin: 0 0 6px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
